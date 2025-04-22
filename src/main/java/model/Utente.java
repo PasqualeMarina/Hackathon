@@ -1,29 +1,19 @@
-package model;
+package org.example;
 
-/**
- * The type Utente.
- */
 public class Utente {
-    private final String login;
-    private String password;
-
-    /**
-     * Instantiates a new Utente.
-     *
-     * @param login    the login
-     * @param password the password
-     */
-    public Utente(String login, String password) {
-        this.login = login;
+    public Utente(String ssn, String nome, String cognome, String email, String password, String ruolo){
+        this.ssn = ssn;
+        this.nome = nome;
+        this.cognome = cognome;
+        this.email = email;
         this.password = password;
+        this.ruolo = ruolo;
     }
 
-    /**
-     * Gets login.
-     *
-     * @return the login
-     */
-    public String getLogin() {
-        return login;
-    }
+    private String ssn;
+    private String nome;
+    private String cognome;
+    private String email;
+    private String password;
+    private String ruolo; //può essere "Partecipante", "Organizzatore" o "Giudice"
 }
