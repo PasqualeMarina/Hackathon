@@ -6,20 +6,20 @@ public class Partecipante extends Utente {
         super(ssn, nome, cognome, email, password, ruolo);
     }
 
-    public effettuaIscrizione(Hackathon evento){
+    public void effettuaIscrizione(Hackathon evento){
         iscrizioniEventi.add(evento);
     }
 
-    public creaTeam(String Nome, Hackathon evento){
+    public void creaTeam(String Nome, Hackathon evento){
         Team team = new Team(Nome, this, evento);
         this.team = team;
     }
 
-    public inviaInvito(Partecipante partecipante){
+    public void inviaInvito(Partecipante partecipante){
         partecipante.invitiRicevuti.add(this.team);
     }
 
-    public accettaInvito(Team team){
+    public void accettaInvito(Team team){
         if(this.team == null && this.invitiRicevuti.contains(team))
             this.team = team;
     }
