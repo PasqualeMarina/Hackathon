@@ -1,8 +1,12 @@
-package org.example;
+package model;
 
 import java.util.ArrayList;
 
 public class Documento {
+    private String link;
+    private Team team;
+    private ArrayList<Commento> commenti = new ArrayList<>();
+
     public Documento(String link, Team team){
         this.link = link;
         this.team = team;
@@ -12,7 +16,7 @@ public class Documento {
         commenti.add(commento);
     }
 
-    private String link;
-    private Team team;
-    private ArrayList<Commento> commenti;
+    public String getLink(){
+        return link;
+    }
 }
