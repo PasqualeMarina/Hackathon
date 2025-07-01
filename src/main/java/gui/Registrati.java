@@ -5,12 +5,26 @@ import model.*;
 
 import javax.swing.*;
 
+/**
+ * Classe che implementa l'interfaccia grafica per la registrazione degli utenti.
+ * Permette la creazione di nuovi account per:
+ * - Organizzatori
+ * - Giudici
+ * - Partecipanti
+ * <p>
+ * La form richiede l'inserimento di:
+ * - Nome
+ * - Cognome
+ * - Codice fiscale
+ * - Email
+ * - Password
+ * - Selezione del ruolo
+ */
 public class Registrati extends JFrame{
     private JPanel registratiPanel;
     private JTextField nomeField1;
     private JTextField cognomeField1;
     private JTextField ssnField1;
-    private JLabel ruoloField1;
     private JTextField emailField1;
     private JPasswordField passwordField1;
     private JRadioButton partecipanteRadioButton;
@@ -18,14 +32,16 @@ public class Registrati extends JFrame{
     private JRadioButton organizzatoreRadioButton;
     private JButton accediButton;
     private JButton creaAccountButton;
+    private JLabel ruoloField1;
 
     public Registrati(Controller controller) {
         setTitle("Registrazione");
         setResizable(false);
         setContentPane(registratiPanel);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // chiude solo questa finestra
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); // chiude solo questa finestra
         setSize(600, 300);
         setVisible(true);
+        ruoloField1.setText("Seleziona un ruolo");
 
         accediButton.addActionListener(e -> {
             dispose();
@@ -33,7 +49,7 @@ public class Registrati extends JFrame{
         });
 
         creaAccountButton.addActionListener(e -> {
-            if(emailField1.getText().length() <= 0 || passwordField1.getPassword().length==0)
+            if(emailField1.getText().isEmpty() || passwordField1.getPassword().length==0)
                 JOptionPane.showMessageDialog(this, "Riempi i campi obbligatori!", "Errore", JOptionPane.WARNING_MESSAGE);
             else{
                 if(organizzatoreRadioButton.isSelected()){
