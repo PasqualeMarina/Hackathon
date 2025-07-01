@@ -29,7 +29,6 @@ public class GiudiceImplementazionePostgresDao implements GiudiceDAO {
         }
     }
 
-    // ✅ Aggiornato per segnare stato = 'ACCETTATO'
     public boolean accettaInvito(Hackathon evento, String giudiceSSN) {
         String sql = "UPDATE giudice_hackathon SET stato = 'ACCETTATO' " +
                 "WHERE hackathon_titolo = ? AND giudice_ssn = ? AND stato = 'INVITATO'";
@@ -43,7 +42,6 @@ public class GiudiceImplementazionePostgresDao implements GiudiceDAO {
         }
     }
 
-    // ✅ Cancella invito se rifiutato
     public void rifiutaInvito(Hackathon evento, String giudiceSSN) {
         String sql = "DELETE FROM giudice_hackathon WHERE hackathon_titolo = ? AND giudice_ssn = ?";
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -55,7 +53,6 @@ public class GiudiceImplementazionePostgresDao implements GiudiceDAO {
         }
     }
 
-    // ✅ Invita un giudice con stato = 'INVITATO'
     public boolean aggiungiInvito(Giudice giudice, Hackathon evento) {
         String sql = "INSERT INTO giudice_hackathon (giudice_ssn, hackathon_titolo, stato) " +
                 "VALUES (?, ?, 'INVITATO')";
@@ -69,7 +66,6 @@ public class GiudiceImplementazionePostgresDao implements GiudiceDAO {
         }
     }
 
-    // ✅ Ottiene solo inviti non ancora accettati
     public List<Hackathon> getInvitiRicevuti(Giudice giudice, List<Hackathon> eventiCaricati) {
         List<Hackathon> inviti = new ArrayList<>();
         String sql = """
@@ -96,7 +92,6 @@ public class GiudiceImplementazionePostgresDao implements GiudiceDAO {
         return inviti;
     }
 
-    // ✅ Ottiene solo giudici che hanno accettato
     public List<Giudice> getGiudiciByHackathon(String titoloEvento) {
         List<Giudice> giudici = new ArrayList<>();
         String sql = """

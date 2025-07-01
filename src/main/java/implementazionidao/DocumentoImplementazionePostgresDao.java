@@ -83,7 +83,6 @@ public class DocumentoImplementazionePostgresDao implements DocumentoDAO {
         return commenti;
     }
 
-    // Metodo di supporto per recuperare l'ID del documento dato team_nome e contenuto
     private int getIdDocumento(Documento documento) throws SQLException {
         String sql = "SELECT id FROM documento WHERE contenuto = ? AND team_nome = ?";
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -115,7 +114,6 @@ public class DocumentoImplementazionePostgresDao implements DocumentoDAO {
                 while (rs.next()) {
                     String link = rs.getString("contenuto");
 
-                    // Costruisco il Documento con l'oggetto team che ricevo in input
                     Documento d = new Documento(
                             link,
                             team

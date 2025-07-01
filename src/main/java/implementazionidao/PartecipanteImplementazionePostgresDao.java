@@ -65,7 +65,6 @@ public class PartecipanteImplementazionePostgresDao implements PartecipanteDAO {
 
     @Override
     public boolean inviaInvito(Partecipante destinatario, Team team) {
-        // Simulazione invito: verifica se già invitato
         String sql = "SELECT partecipante_ssn, team_nome FROM partecipante_team WHERE partecipante_ssn = ? AND team_nome = ?";
 
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -233,7 +232,7 @@ public class PartecipanteImplementazionePostgresDao implements PartecipanteDAO {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // Puoi sostituirlo con una gestione più adeguata
+            e.printStackTrace();
         }
 
         return partecipanti;
